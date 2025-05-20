@@ -3,7 +3,12 @@
 :TRIGGER:  org-gtd-next-project-action org-gtd-update-project-task!
 :END:
 
-* Instructions
+* Minimal repo to test org roam
+:PROPERTIES:
+:CREATED:  2025-05-20 07:55:51
+:END:
+
+** Instructions
 :PROPERTIES:
 :CREATED:  2025-05-20 07:54:24
 :END:
@@ -14,7 +19,7 @@
 
 - run.
 
-* Example:
+** Example:
 :PROPERTIES:
 :CREATED:  2025-05-20 07:54:24
 :END:
