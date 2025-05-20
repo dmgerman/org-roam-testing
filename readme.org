@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       id-20250520-074345
+:TRIGGER:  org-gtd-next-project-action org-gtd-update-project-task!
+:END:
+
+* Instructions
+:PROPERTIES:
+:CREATED:  2025-05-20 07:54:24
+:END:
+
+- Clone this repo
+- In the same directory where this was cloned, add a directory org-roam with some
+  roam files
+
+- run.
+
+* Example:
+:PROPERTIES:
+:CREATED:  2025-05-20 07:54:24
+:END:
+
+- I am cloning in the ~/temp/org-roam-dev directory
+- Org-roam files are in   ~/temp/org-roam-dev/roam/
+- db is created in ~/temp/org-roam-dev/emacs  directory
+
+  #+begin_src bash   :exports both
+#!/bin/bash
+
+/opt/homebrew/bin/emacs --debug-init --init-directory=/Users/dmg/temp/org-roam-dev/emacs
+  #+end_src
+
