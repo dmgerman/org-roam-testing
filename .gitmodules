@@ -1,0 +1,6 @@
+[submodule "org-roam"]
+	path = org-roam
+	url = git@github.com:org-roam/org-roam
+[submodule "consult-org-roam"]
+	path = consult-org-roam
+	url = https://github.com/jgru/consult-org-roam
