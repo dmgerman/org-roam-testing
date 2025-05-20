@@ -1,12 +1,12 @@
 ;; -*- lexical-binding: t; -*-
 
-(add-to-list 'load-path "~/temp/org-roam-dev/emacs/org-roam/")
-(add-to-list 'load-path "~/temp/org-roam-dev/emacs/consult-org-roam/")
+;; by default same directory where the emacs directory is
+(setq org-roam-directory (file-truename (concat user-emacs-directory "../roam/" )))
 
-(setq org-roam-enable-speed-commands nil)
+(add-to-list 'load-path (concat user-emacs-directory "emacs/org-roam/" ))
+(add-to-list 'load-path (concat user-emacs-directory "emacs/org-consult-roam/" ))
 
 (setq debug-on-error t)
-
 
 (require 'org)
 
@@ -38,7 +38,6 @@
 
 (require 'org-roam)
 
-(setq org-roam-directory (file-truename "/Users/dmg/temp/org-roam-dev/roam/"))
 
 (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
 (global-set-key (kbd "C-c n f") 'org-roam-node-find)
@@ -100,13 +99,12 @@ This function is equivalent to the following template
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-
 (use-package consult
   :ensure t
   )
 
 (require 'consult-org-roam)
+
 (consult-org-roam-mode 1)
 
 (setq consult-org-roam-grep-func #'consult-ripgrep)
