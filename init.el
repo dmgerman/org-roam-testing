@@ -3,8 +3,8 @@
 ;; by default same directory where the emacs directory is
 (setq org-roam-directory (file-truename (concat user-emacs-directory "../roam/" )))
 
-(add-to-list 'load-path (concat user-emacs-directory "emacs/org-roam/" ))
-(add-to-list 'load-path (concat user-emacs-directory "emacs/org-consult-roam/" ))
+(add-to-list 'load-path (concat user-emacs-directory "org-roam/" ))
+(add-to-list 'load-path (concat user-emacs-directory "consult-org-roam/" ))
 
 (setq debug-on-error t)
 
