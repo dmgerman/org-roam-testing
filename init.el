@@ -51,51 +51,15 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun dmg-org-roam-to-string (st)
-  "Make sure we have ST is a string. if it is a list, concatenate it."
-  (cond
-   ((stringp st) st)
-   ((listp st) (mapconcat 'identity st " "))
-   (t "")))
-      
-(defun dmg-org-roam-truncate (st width)
-  "Return ST as a string of length WIDTH. Using spaces for padding"
-  (truncate-string-to-width (dmg-org-roam-to-string st) width nil ? ))
-
-(defun dmg-org-roam-format-tags (tags width)
-  "Return TAGS as a string of width WIDTH.
-Prefixes every tag with #."
-  (dmg-org-roam-truncate 
-   (mapconcat (lambda (tag) (concat "#" tag)) tags " ")
-   width))
+(defun my--org-roam-format (node)
+  "formats the node"
+  (format "%-40s %s"
+          (if (org-roam-node-title node)
+              (propertize (org-roam-node-title node) 'face 'org-todo)
+            "")
+          (file-name-nondirectory (org-roam-node-file node))))
   
-(defun dmg-org-roam-format (node)
-  "Sample function to format a NODE.
-This function is equivalent to the following template
- (setq org-roam-node-display-template
-              (concat 
-                (propertize \"${todo} \" 'face 'org-todo)
-                \"${todo:10} \"
-                (propertize \"${tags:30} \" 'face 'org-tag)
-                \"${title} \"
-                \"${file}\"
-                \"${olp}\"
-                ))"
-  (let (
-        (formatted-node     (concat (org-roam-node-todo node)
-                                    " "
-                                    (propertize
-                                     (dmg-org-roam-format-tags (org-roam-node-tags node) 30))
-                                    " " (org-roam-node-title node)
-                                    " " (org-roam-node-file node)
-                                    " "
-                                    (string-join (org-roam-node-olp node) " > "))
-                            ))
-    (cons
-     (propertize formatted-node 'node node)
-     node)))
-
-(setq org-roam-node-display-template 'dmg-org-roam-format)
+(setq org-roam-node-display-template 'my--org-roam-format)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
