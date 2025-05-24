@@ -4,3 +4,6 @@
 [submodule "consult-org-roam"]
 	path = consult-org-roam
 	url = https://github.com/jgru/consult-org-roam
+[submodule "org-roam-gt"]
+	path = org-roam-gt
+	url = git@github.com:dmgerman/org-roam-gt

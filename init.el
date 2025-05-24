@@ -5,6 +5,7 @@
 
 (add-to-list 'load-path (concat user-emacs-directory "org-roam/" ))
 (add-to-list 'load-path (concat user-emacs-directory "consult-org-roam/" ))
+(add-to-list 'load-path (concat user-emacs-directory "org-roam-gt/" ))
 
 (setq debug-on-error t)
 
@@ -21,23 +22,24 @@
   (vertico-mode))
 
 (use-package dash
-  :ensure t
-  )
+  :ensure t)
 
 (use-package magit
-  :ensure t
-  )
+  :ensure t)
 
 (use-package magit-section
-  :ensure t
-  )
+  :ensure t)
 
 (use-package emacsql
-  :ensure t
-  )
+  :ensure t)
+
+(use-package hydra
+  :ensure t)
+
+(use-package consult
+  :ensure t)
 
 (require 'org-roam)
-
 
 (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
 (global-set-key (kbd "C-c n f") 'org-roam-node-find)
@@ -46,26 +48,8 @@
 (global-set-key (kbd "C-c n c") 'org-roam-capture)
 (global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
 
-;;(setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun my--org-roam-format (node)
-  "formats the node"
-  (format "%-40s %s"
-          (if (org-roam-node-title node)
-              (propertize (org-roam-node-title node) 'face 'org-todo)
-            "")
-          (file-name-nondirectory (org-roam-node-file node))))
-  
-(setq org-roam-node-display-template 'my--org-roam-format)
-
+(require 'org-roam-gt)
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package consult
-  :ensure t
-  )
 
 (require 'consult-org-roam)
 
@@ -81,6 +65,7 @@
 (global-set-key (kbd "C-c n l") 'consult-org-roam-forward-links)
 (global-set-key (kbd "C-c n r") 'consult-org-roam-search)
 
+(org-roam-gt-mode 1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
